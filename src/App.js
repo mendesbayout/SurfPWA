@@ -4,6 +4,8 @@ import Sidebar from './components/layout/Sidebar';
 import Navbar from './components/layout/Navbar';
 import Forecast from './components/Forecast/Forecast';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -12,6 +14,8 @@ const Content = styled.div`
   min-height: 100vh;
   transition: all 0.3s;
   font-family: 'Raleway', sans-serif;
+
+  
 `;
 // test
 

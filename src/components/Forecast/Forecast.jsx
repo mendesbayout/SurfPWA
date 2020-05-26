@@ -40,7 +40,7 @@ class Forecast extends Component {
     this.state = {
       //forecastNumber will change when clicking buttons
       forecastNumber: 4,
-      value: 'Witches Rock',
+      value: 'Carapebus',
       //charts
       periodChart: '',
       swellChart: '',
@@ -69,9 +69,7 @@ class Forecast extends Component {
     let forecastNumber = 4;
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://magicseaweed.com/api/${
-          process.env.REACT_APP_MS_KEY
-        }/forecast/?spot_id=${spotId}&units=us&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed`
+        `https://cors-anywhere.herokuapp.com/http://magicseaweed.com/api/a2851e2862a0234295b87264f1d1638e/forecast/?spot_id=3883&units=eu&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed,wind.compassDirection`
       )
       .then(res => {
         console.log(res.data);
@@ -83,7 +81,7 @@ class Forecast extends Component {
           pressure: res.data[forecastNumber].condition.pressure,
           localTimestamp: res.data[forecastNumber].localTimestamp,
           solidRating: res.data[forecastNumber].solidRating,
-          fadedRating: res.data[forecastNumber].fadedRating,
+          fadedRating: res.data[forecastNumber].fadedRating,          
           absMaxBreakingHeight: Math.round(
             res.data[forecastNumber].swell.absMaxBreakingHeight
           ),
@@ -138,20 +136,9 @@ class Forecast extends Component {
     } = this.state;
     return (
       <Content className="container">
-        <div className="row mb-3">
-          <div className="form-group col-lg-4 col-sm-12 mt-3">
-            <label htmlFor="exampleFormControlSelect1">Select your spot</label>
-            <select
-              className="form-control container"
-              id="exampleFormControlSelect1"
-              onChange={this.props.change}
-              value={this.props.value}
-            >
-              <option value="Witches Rock">Witches Rock (North Pacific)</option>
-              <option value="Playa Hermosa">
-                Playa Hermosa (Central Pacific)
-              </option>
-            </select>
+        <div className="row mb-4">
+          <div className="form-group col-lg-6 col-sm-12 mt-3">
+            <label> Condição atual do pico</label>      
           </div>
         </div>
         <div className="row">

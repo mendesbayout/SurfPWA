@@ -25,7 +25,7 @@ class Rating extends Component {
     return (
       <RatingCard className="card h-100">
         <div className="card-body">
-          <h3 className="card-title">Swell Rating</h3>
+          <h3 className="card-title">Surfabilidade do pico</h3>
           <div className="stars">
             {ratings.map((rating, i) => (
               <img src={rating} key={i} alt="Star Icon" />
@@ -35,10 +35,10 @@ class Rating extends Component {
         <div className="card-footer text-muted">
           <ul className="list-group">
             <li>
-              <strong>*Solid stars: </strong>swell quality/power
+              <strong>*Estrelas sólidas: </strong>Qualidade e poder do Swell positivo
             </li>
             <li>
-              <strong>*Faded stars: </strong>rating affected by wind
+              <strong>*Estrelas transparentes: </strong>Qualidade afetada pelo vento
             </li>
           </ul>
         </div>

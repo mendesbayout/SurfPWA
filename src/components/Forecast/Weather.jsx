@@ -15,17 +15,17 @@ const Weather = ({ weather, temp, pressure }) => {
   return (
     <WeatherCard className="card h-100">
       <div className="card-body">
-        <h3 className="card-title">Weather</h3>
+        <h3 className="card-title">Clima</h3>
         <div className={`msw-sw msw-sw-${weather}`} />
       </div>
       <div className="card-footer text-muted">
         <ul className="list-group">
           <li>
-            <strong>Temperature: </strong>
+            <strong>Temperatura: </strong>
             {temp}&#8451;
           </li>
           <li>
-            <strong>Pressure: </strong>
+            <strong>Pressão: </strong>
             {pressure} mb
           </li>
         </ul>

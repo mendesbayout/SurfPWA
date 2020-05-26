@@ -17,9 +17,9 @@ const SurfHeight = ({ maxHeight, minHeight, direction, period }) => {
   return (
     <SurfCard className="card h-100">
       <div className="card-body">
-        <h3 className="card-title">Height & Direction</h3>
+        <h3 className="card-title">Altura e direção</h3>
         <h2 className="range">
-          {minHeight} - {maxHeight} ft
+          {minHeight} - {maxHeight} Metros
         </h2>
       </div>
       <div className="card-footer text-muted">
