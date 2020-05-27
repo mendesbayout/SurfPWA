@@ -40,7 +40,7 @@ class Forecast extends Component {
     this.state = {
       //forecastNumber will change when clicking buttons
       forecastNumber: 4,
-      value: 'Carapebus',
+      value: 'rock',
       //charts
       periodChart: '',
       swellChart: '',
@@ -66,10 +66,10 @@ class Forecast extends Component {
   }
 
   fetchData(spotId) {
-    let forecastNumber = 4;
+    let forecastNumber = 0;
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://magicseaweed.com/api/a2851e2862a0234295b87264f1d1638e/forecast/?spot_id=3883&units=eu&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed,wind.compassDirection`
+        `https://cors-anywhere.herokuapp.com/http://magicseaweed.com/api/a2851e2862a0234295b87264f1d1638e/forecast/?spot_id=${spotId}&units=eu&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed`
       )
       .then(res => {
         console.log(res.data);
@@ -112,63 +112,74 @@ class Forecast extends Component {
     this.fetchData(this.props.spotId);
   }
 
-  //change spot
-  componentDidUpdate(prevProps) {
-    if (this.props.spotId !== prevProps.spotId) {
-      this.fetchData(this.props.spotId);
-    }
-  }
-
-  render() {
-    const {
-      absMaxBreakingHeight,
-      absMinBreakingHeight,
-      compassDirection,
-      period,
-      weather,
-      temperature,
-      pressure,
-      ratings,
-      periodChart,
-      swellChart,
-      direction,
-      speed
-    } = this.state;
-    return (
-      <Content className="container">
-        <div className="row mb-4">
-          <div className="form-group col-lg-6 col-sm-12 mt-3">
-            <label> Condição atual do pico</label>      
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-4 col-sm-12">
-            <SurfHeight
-              maxHeight={absMaxBreakingHeight}
-              minHeight={absMinBreakingHeight}
-              direction={compassDirection}
-              period={period}
-            />
-          </div>
-          <div className="col-lg-4 col-sm-12">
-            <Weather weather={weather} temp={temperature} pressure={pressure} />
-          </div>
-          <div className="col-lg-4 col-sm-12">
-            <Rating ratings={ratings} />
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-sm-12 col-lg-4">
-            <Wind direction={direction} speed={speed} />
-          </div>
-        </div>
-        <div className="container mt-3 charts">
-          <PeriodChart periodChart={periodChart} />
-          <SwellChart swellChart={swellChart} />
-        </div>
-      </Content>
-    );
+ //change spot
+ componentDidUpdate(prevProps) {
+  if (this.props.spotId !== prevProps.spotId) {
+    this.fetchData(this.props.spotId);
   }
 }
 
+render() {
+  const {
+    absMaxBreakingHeight,
+    absMinBreakingHeight,
+    compassDirection,
+    period,
+    weather,
+    temperature,
+    pressure,
+    ratings,
+    periodChart,
+    swellChart,
+    direction,
+    speed
+  } = this.state;
+  return (
+    <Content className="container">
+      <div className="row mb-3">
+        <div className="form-group col-lg-4 col-sm-12 mt-3">
+          <label htmlFor="exampleFormControlSelect1">Selecione o pico</label>
+          <select
+            className="form-control container"
+            id="exampleFormControlSelect1"
+            onChange={this.props.change}
+            value={this.props.value}
+          >
+            <option value="3882">Laje do pecado</option>
+            <option value="5104">Secret Carapebus</option>
+                     
+          </select>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-4 col-sm-12">
+          <SurfHeight
+            maxHeight={absMaxBreakingHeight}
+            minHeight={absMinBreakingHeight}
+            direction={compassDirection}
+            period={period}
+          />
+        </div>
+        <div className="col-lg-4 col-sm-12">
+          <Weather weather={weather} temp={temperature} pressure={pressure} />
+        </div>
+        <div className="col-lg-4 col-sm-12">
+          <Rating ratings={ratings} />
+        </div>
+      </div>
+      <div className="row mt-4">
+        <div className="col-sm-12 col-lg-4">
+          <Wind direction={direction} speed={speed} />
+        </div>
+      </div>
+      <div className="container mt-3 charts">
+        <PeriodChart periodChart={periodChart} />
+        <SwellChart swellChart={swellChart} />
+      </div>
+    </Content>
+  );
+}
+}
+
 export default Forecast;
+        

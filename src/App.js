@@ -21,15 +21,15 @@ const Content = styled.div`
 
 class App extends Component {
   state = {
-    spotName: 'Witches Rock',
-    spotId: 443
+    spotName: 'pecado',
+    spotId: 3882
   };
 
   change = _ => {
-    if (this.state.spotName === 'Witches Rock') {
-      this.setState({ spotName: 'Playa Hermosa', spotId: 987 });
+    if (this.state.spotName === 'pecado') {
+      this.setState({ spotName: 'carapebus', spotId: 5104 });
     } else {
-      this.setState({ spotName: 'Witches Rock', spotId: 443 });
+      this.setState({ spotName: 'pecado', spotId: 3882 });
     }
   };
 

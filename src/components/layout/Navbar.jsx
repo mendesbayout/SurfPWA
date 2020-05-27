@@ -77,12 +77,27 @@ class Navbar extends Component {
           className="btn btn-info"
           onClick={this.onToggleClick}
         >
-         
+          <svg
+            className="svg-inline--fa fa-align-right fa-w-14 mr-1"
+            aria-hidden="true"
+            data-prefix="fas"
+            data-icon="align-right"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            data-fa-i2svg=""
+            width="1em"
+          >
+            <path
+              fill="currentColor"
+              d="M160 84V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H176c-8.837 0-16-7.163-16-16zM16 228h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm160-128h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H176c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            />
+          </svg>
           <span>Menu</span>
         </button>
         <div className="">
           <h1 id="title" className="ml-5">
-            Condição de surf praia do pecado
+            Pecadão surf status
           </h1>
         </div>
       </Nav>
